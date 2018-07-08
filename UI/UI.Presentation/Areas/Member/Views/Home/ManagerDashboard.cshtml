@@ -1,0 +1,122 @@
+﻿@using Service.RestProject.ViewModels.Base;
+@model Tuple<IEnumerable<UserManagerVm>, UserManagerVm>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Left_Nav_Admin.cshtml";
+
+    UserManagerVm currentManager = Model.Item2;
+    IEnumerable<UserManagerVm> managerList = Model.Item1;
+
+}
+
+<div class="content-header">
+    &nbsp;
+</div>
+
+<div class="container-fluid">
+
+    <!-- START MENU-TOOLBAR -->
+    <div class="menu-toolbar">
+
+        <div class="right">
+
+            <select class="text-uppercase">
+                @if (managerList == null || !managerList.Any())
+                {
+                    <option> -- </option> }
+                else
+                {
+                    foreach (var m in managerList.OrderBy(o => o.Name))
+                    {
+                        <option value="@m.Identity" @(m.Identity == currentManager.Identity ? "selected=\"selected\"" : "")>@m.Name</option>
+                    }
+                }
+            </select>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-ellipsis-v no-m fs-18 text red"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li>
+                        <a href="/Member/Manager/Create"><i class="fa fa-plus"></i>Create New Manager</a>
+                    </li>
+                    <li><a href="/Member/Manager/Update/@currentManager.Identity"><i class="fa fa-cog"></i>Update Manager</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a data-action="deleteMemberManager" data-value="@currentManager.Identity"><i class="fa fa-trash"></i>Delete</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <!-- END MENU-TOOLBAR -->
+
+    <br />
+
+    <!-- START : BANDWIDTH GRAPH -->
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <div class="styled-card full">
+                <i class="styled-bkg-img fa fa-line-chart"></i>
+                <p class="styled-card-title">Usage</p>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- END : BANDWIDTH GRAPH -->
+
+    <br />
+
+    <!-- START: HEAD COUNTER -->
+    <div class="row">
+
+        <div class="col-sm-6 col-md-3">
+
+            <div class="styled-card full">
+                <i class="styled-bkg-img fa fa-user-circle-o"></i>
+                <p class="styled-card-title">
+                    Total Online Members
+                </p>
+            </div>
+
+        </div>
+
+        <div class="col-sm-6 col-md-3">
+
+            <div class="styled-card full">
+                <i class="styled-bkg-img fa fa-users"></i>
+                <p class="styled-card-title">
+                    Total Member Count
+                </p>
+            </div>
+
+        </div>
+
+        <div class="col-sm-6 col-md-3">
+
+            <div class="styled-card full">
+                <i class="styled-bkg-img fa fa-cogs"></i>
+                <p class="styled-card-title">
+                    Total Manager Users
+                </p>
+            </div>
+
+        </div>
+
+        <div class="col-sm-6 col-md-3">
+
+            <div class="styled-card full">
+                <i class="styled-bkg-img fa fa-rocket"></i>
+                <p class="styled-card-title">
+                    Total API Transactions
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- END : HEAD COUNTER -->
+</div>

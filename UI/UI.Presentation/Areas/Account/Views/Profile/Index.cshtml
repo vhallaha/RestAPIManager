@@ -1,0 +1,115 @@
+﻿@model Service.RestProject.ViewModels.Base.UserVm
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Left_Nav_Admin.cshtml";
+}
+
+<div class="content-header">
+    &nbsp;
+</div>
+
+<div class="container">
+
+    <!-- START : UPDATE INFORMATION -->
+    <div class="card card-block">
+
+        <div class="card-head">
+            <header>Profile</header>
+        </div>
+
+        <div class="card-body">
+
+            <div class="form-box">
+                <header>Account Information</header>
+                <div class="form-group">
+                    <label for="displayName">Display Name</label>
+                    <input name="displayName" type="text" class="form-control" value="@Model.DisplayName" />
+                </div>
+
+                <br />
+                <header>Account Information</header>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="Metadata.FirstName">First Name</label>
+                            <input name="Metadata.FirstName" type="text" class="form-control" value="@(Model.Metadata?.FirstName)" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="Metadata.LastName">Last Name</label>
+                            <input name="Metadata.LastName" type="text" class="form-control" value="@(Model.Metadata?.LastName)" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Metadata.Address">Address</label>
+                    <input name="Metadata.Address" type="text" class="form-control" value="@(Model.Metadata?.Address)" />
+                </div>
+
+                <hr />
+                <div class="text-right">
+                    <a class="btn btn-sm btn-primary" data-action="updateProfile">Update</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- END : UPDATE INFORMATION -->
+    <!-- START : UPDATE PASSWORD -->
+    <div class="card card-block">
+
+        <div class="card-head">
+            <header>Password</header>
+        </div>
+
+        <div class="card-body">
+
+            <div class="alert alert-info">
+                After a successful change of password you will be logged-off to enter the newly changed password.
+            </div>
+
+            <div class="form-box">
+
+                <div class="form-group">
+                    <label for="oldPassword">Old Password</label>
+                    <input name="oldPassword" type="password" class="form-control"
+                           data-validate-required="true"
+                           data-validate-length="6" />
+                </div>
+
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <input name="newPassword" type="password" class="form-control"
+                           data-validate-required="true"
+                           data-validate-length="6"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input name="confirmPassword" type="password" class="form-control"
+                           data-validate-required="true"
+                           data-validate-length="6"
+                           data-validate-compare="newPassword"/>
+                </div>
+
+                <hr />
+                <div class="text-right">
+                    <a class="btn btn-sm btn-primary" data-action="changePassword">Update</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- END : UPDATE PASSWORD -->
+</div>
+
+@section scripts{
+    <script src="~/Content/js/ui.account.js"></script>
+}

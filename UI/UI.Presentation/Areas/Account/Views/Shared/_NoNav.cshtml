@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html class="@ViewBag.htmlCSS">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Roboto:100,300,400,500,700" rel="stylesheet">
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/less")
+</head>
+<body class="@ViewBag.bodyCSS">
+
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/utilities") 
+
+    <script src="~/Content/js/ui.account.js"></script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

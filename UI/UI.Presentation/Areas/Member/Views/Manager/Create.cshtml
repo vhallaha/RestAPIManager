@@ -1,0 +1,80 @@
+﻿@model Service.RestProject.ViewModels.Base.UserManagerVm
+@{
+    ViewBag.Title = "Manager";
+    Layout = "~/Views/Shared/_Left_Nav_Admin.cshtml";
+}
+
+<div class="container">
+
+    <div class="card card-block">
+
+        <div class="card-head">
+            <header>Create New Manager</header>
+        </div>
+
+        <div class="card-body">
+
+            <div class="form-box" data-visible-only="true">
+
+                <!-- START : GENERIC INFO -->
+                <div class="form-group">
+                    <label for="Name">Manager Name</label>
+                    <input name="Name" type="text" class="form-control"
+                           data-validate-required="true"
+                           data-validate-length="6" />
+                </div>
+                <!-- END : GENERIC INFO -->
+
+                <br />
+
+                <!-- START : SETTINGS -->
+                <header>Settings</header>
+                <div class="row">
+
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label>
+                                @Html.CheckBoxFor(m => m.Settings.AutoValidateUser) Auto Validate Users
+                            </label> &nbsp;
+                            <i class="fa fa-info-circle" aria-hidden="true"
+                               title="Auto Validate Users"
+                               data-toggle="popover"
+                               data-content="Automatically set the account to active after resitration without confirmation."></i>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label>
+                                @Html.CheckBoxFor(m => m.Settings.RestrictEmail) Restrict Email Address
+                            </label> &nbsp;
+                            <i class="fa fa-info-circle" aria-hidden="true"
+                               title="Restrict Email Address"
+                               data-toggle="popover"
+                               data-content="Restrict the use of email addresses to only one making it unique to the manager."></i>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- END : SETTINGS -->
+
+                <hr />
+                <div class="text-right">
+                    <a class="btn btn-sm btn-primary" data-action="createMemberManager">Create</a>
+                </div>
+
+            </div>
+
+        </div> 
+
+    </div>
+     
+</div>
+
+@section scripts{
+    <script src="~/Content/js/ui.member.js"></script>
+}

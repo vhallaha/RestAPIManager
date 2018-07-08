@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    <script src="https://use.fontawesome.com/bfd3768e0c.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Roboto:100,300,400,500,700" rel="stylesheet">
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/less")
+</head>
+<body class="nav-wrapper">
+
+    <!-- START : LEFT NAV -->
+    <div class="nav-left">
+
+        <!-- START : COMPANY LOGO -->
+        <div class="nav-logo">
+            <a class="txt-special nav-full">Rest.Project</a>
+            <a class="txt-special nav-short">RP</a>
+        </div>
+        <!-- END : COMPANY LOGO -->
+        <!-- START : NAVIGATION -->
+        <div class="nav-link-container" data-action="scrollbar">
+            <ul>
+                <li class="divider">Navigation</li>
+                <li>
+                    <a href="/"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Home</a>
+                </li>
+                <li>
+                    <a href="/Dashboard"><i class="fa fa-desktop" aria-hidden="true"></i>&nbsp;Dashboard</a>
+                </li>
+                <li>
+                    <a><i class="fa fa-book" aria-hidden="true"></i>&nbsp;Documentation</a>
+                </li>
+                <li class="divider">Managers</li>
+                <li>
+                    <a><i class="fa fa-cube" aria-hidden="true"></i>&nbsp;Clients</a>
+                </li>
+                <li>
+                    <a href="/Member/Home/ManagerDashboard/"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Member</a>
+                </li>
+                <li class="divider">Settings</li>
+                <li>
+                    <a href="/Account/Profile"><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;Profile</a>
+                </li>
+                @*<li>
+                    <a href="/Account/Security"><i class="fa fa-shield" aria-hidden="true"></i>&nbsp;Security</a>
+                </li>*@
+            </ul>
+        </div>
+        <!-- END : NAVIGATION -->
+
+    </div>
+    <!-- END : LEFT NAV-->
+    <!-- START : NAVIGATION -->
+    <header class="navi-main-header">
+        <nav class="navi-nav left">
+            <ul class="navi-top-nav">
+                <li><a data-action="leftNavToggle"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
+            </ul>
+        </nav>
+        <nav class="navi-nav right">
+            <ul class="navi-top-nav">
+                <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;Home</a></li>
+                <li class="mobile-display"><a href="/Account/Home/Logout"><i class="fa fa-power-off" aria-hidden="true"></i></a></li>
+            </ul>
+        </nav>
+
+    </header>
+    <!-- END : NAVIGATION -->
+    <!-- START : CONTENT -->
+    <div class="nav-content">
+        <ol class="breadcrumb">
+             
+            @if (ViewContext.RouteData.Values["controller"].ToString() != "Home")
+            {
+                <li>
+                    <a href="/Dashboard">Home</a>
+                </li>
+                <li class="active">
+                    @ViewBag.Title
+                </li>
+            }
+            else
+            {
+                <li class="active">
+                    Home
+                </li>
+            }
+
+        </ol>
+
+        @RenderBody()
+
+    </div>
+    <!-- END : CONTENT -->
+
+    @Scripts.Render("~/bundles/utilities")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

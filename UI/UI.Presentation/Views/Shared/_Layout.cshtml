@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    <script src="https://use.fontawesome.com/bfd3768e0c.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Roboto:100,300,400,500,700" rel="stylesheet">
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/less")
+</head>
+<body>
+
+    <!-- START : NAVIGATION -->
+    <div class="navbar navbar-fixed-top">
+
+        <div class="container">
+
+            <!-- START: NAVBAR - HEADER -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navMainMenu">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand txt-special">Rest<span class="text red txt-special">.</span>Project</a>
+            </div>
+            <!-- END: NAVBAR - HEADER -->
+            <!-- START: MENU -->
+            <div id="navMainMenu" class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav">
+                    <li><a>Api</a></li>
+                    <li><a>Authorization</a></li>
+
+                    @if (!User.Identity.IsAuthenticated)
+                    { <li><a href="/account/">Login</a></li> }
+                    else
+                    { <li><a href="/dashboard/">Dashboard</a></li>}
+                </ul>
+            </div>
+            <!-- END : MENU -->
+
+
+        </div>
+
+    </div>
+    <!-- END : NAVIGATION -->
+
+    @RenderBody()
+
+    <!-- START : FOOTER -->
+    <footer>
+        &copy;@DateTime.UtcNow.Year Rest.Project
+    </footer>
+    <!-- END : FOOTER -->
+
+    @Scripts.Render("~/bundles/utilities")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,133 @@
+﻿@import 'ui.colors.less';
+
+/*-----------------------------------------------------------
+   PAGE 
+-----------------------------------------------------------*/
+
+
+/* Main Navigation 
+-----------------------------------------------------------*/
+#navMainMenu {
+
+    > .nav {
+        a {
+            font-size: 18px !important;
+        }
+    }
+}
+
+/* Home Page
+-----------------------------------------------------------*/
+.page-home {
+    /* Hero
+    -------------------------------------------------------*/
+    .hero {
+        .slogan {
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    /* 2-Sided Content
+    -------------------------------------------------------*/
+    .two-sided-content {
+        div {
+            padding: 10px;
+        }
+
+        @media (min-width: 480px) {
+            i {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                font-size: 60px;
+                margin-right: 10px;
+                float: left;
+                height: 80px;
+                width: 80px;
+            }
+        }
+
+        h1 {
+            font-size: 40px;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-weight: 300;
+        }
+    }
+
+    /* API DOC Content
+    -------------------------------------------------------*/
+    .api-doc {
+        div {
+            padding: 10px;
+        }
+
+        h1 {
+            font-size: 40px;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-weight: 300;
+        }
+    }
+
+    /* Contact Us Content
+    -------------------------------------------------------*/
+    .contact-us {
+        div {
+            padding: 10px;
+        }
+
+        h1 {
+            font-size: 40px;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-weight: 100;
+            font-size: 24px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        i {
+            display: block;
+            text-align: center;
+            font-size: 60px;
+            margin-bottom: 25px;
+            float: none;
+        }
+
+        h1{
+            font-size: 35px !important;
+        }
+    }
+}
+
+/* Login / Signup
+-----------------------------------------------------------*/
+.login-page, .signup-page {
+    padding-top: 0;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    -ms-flex-pack: center;
+
+    .login-form, .signup-form {
+        flex-shrink: 1;
+        align-items: center;
+        max-width: 450px;
+        width: 100%;
+        min-height: 250px;
+    }
+}

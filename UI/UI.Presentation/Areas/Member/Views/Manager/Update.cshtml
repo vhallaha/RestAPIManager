@@ -1,0 +1,129 @@
+﻿@using Service.RestProject.ViewModels.Base;
+@model UserManagerVm
+@{
+    ViewBag.Title = "Manager Update";
+    Layout = "~/Views/Shared/_Left_Nav_Admin.cshtml";
+}
+
+<div class="container">
+
+    <div class="card card-block">
+
+        <div class="card-head">
+            <header>Update Manager</header>
+        </div>
+
+        <div class="card-body">
+
+            <div class="form-box" data-visible-only="true">
+
+                @Html.HiddenFor(m => m.Identity, new { data_post_force_add = "true" })
+
+                <!-- START : GENERIC INFO -->
+                <div class="form-group">
+                    <label for="Name">Manager Name</label>
+                    @Html.TextBoxFor(m => m.Name, new {
+                                                        @class = "form-control",
+                                                        data_validate_required = true,
+                                                        data_validate_length = 6
+                                                       }) 
+                </div>
+                <!-- END : GENERIC INFO -->
+
+                <br />
+
+                <!-- START : SETTINGS -->
+                <header>Settings</header>
+                <div class="row">
+
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label>
+                                @Html.CheckBoxFor(m => m.Settings.AutoValidateUser) Auto Validate Users
+                            </label> &nbsp;
+                            <i class="fa fa-info-circle" aria-hidden="true"
+                               title="Auto Validate Users"
+                               data-toggle="popover"
+                               data-content="Automatically set the account to active after resitration without confirmation."></i>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label>
+                                @Html.CheckBoxFor(m => m.Settings.RestrictEmail) Restrict Email Address
+                            </label> &nbsp;
+                            <i class="fa fa-info-circle" aria-hidden="true"
+                               title="Restrict Email Address"
+                               data-toggle="popover"
+                               data-content="Restrict the use of email addresses to only one making it unique to the manager."></i>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- END : SETTINGS -->
+
+                <hr />
+                <div class="text-right">
+                    <a class="btn btn-sm btn-primary" data-action="updateMemberManager">Update</a>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card card-block">
+
+        <div class="card-head">
+            <header>Manager Status</header>
+        </div>
+
+        <div class="card-body form-horizontal">
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Identity :</label>
+                <div class="col-md-10 control-display">
+                    @Model.Identity
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Manager Status :</label>
+                <div class="col-md-10 control-display">
+                    @Model.Settings.Status.ToString()
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Update Date (UTC) :</label>
+                <div class="col-md-10 control-display">
+                    @if (Model.UpdateDate == null)
+                    { <i>N/A</i> }
+                    else
+                    {@Model.UpdateDate.Value.ToShortDateString()}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Create Date (UTC) :</label>
+                <div class="col-md-10 control-display">
+                    @Model.CreateDate.ToShortDateString()
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section scripts{
+    <script src="~/Content/js/ui.member.js"></script>
+}
